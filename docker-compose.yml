@@ -1,0 +1,58 @@
+version: "3.7"
+
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "mainpassword"
+      MYSQL_DATABASE: "maybe"
+      MYSQL_USER: "abdullah"
+      MYSQL_PASSWORD: "123564"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    networks:
+      - internalnet
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql # Assuming your Node.js service depends on a MySQL service
+    volumes:
+      - ./site-content/html:/usr/share/nginx/html
+      - ./site-content/css:/usr/share/nginx/html/css
+      - ./site-content/webfonts:/usr/share/nginx/html/fonts
+      - ./site-content/images:/usr/share/nginx/html/images
+
+    networks:
+      - internalnet
+
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile.nodejs
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge

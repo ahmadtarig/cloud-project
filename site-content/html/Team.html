@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/framework.css">
+    <title>Blax</title>
+</head>
+
+
+<body>
+
+    <div class="page ">
+        <div class="topbar d-flex">
+            <img class="m-15" src="images/kisspng-royalty-free-logo-dragon-5af7c7409a9693.0700452215261878406332.png"
+                alt="">
+
+            <ul class="topul d-flex w-full">
+                <li> <a href="index.html">Homepage </a></li>
+                <li><a href="Team.html">Team Memebers</a></li>
+                <li><a href="last.html">Settings</a></li>
+                <li><input type="button" value="Add A Student" onclick="addStudentCard()"></li>
+            </ul>
+        </div>
+
+        <div class="parent d-grid" id="studentContainer">
+
+
+
+        </div>
+
+    </div>
+
+    <script>
+
+        var imageUrls = [
+            "images/avatar-01.png",
+            "images/avatar-02.png",
+            "images/avatar-03.png",
+            "images/avatar-04.png",
+            "images/avatar-05.png",
+            "images/avatar-06.png"
+        ];
+
+        var cardCount = 0; // Initialize card count for unique IDs
+
+        function addStudentCard() {
+            var randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+            cardCount++; // Increment card count for each new card
+
+            // Create unique IDs for each input field using the card count
+            var nameId = 'first' + cardCount;
+            var ageId = 'second' + cardCount;
+            var cgpaId = 'third' + cardCount;
+            var idId = 'forth' + cardCount;
+
+ 
+
+            var newStudentCard = `
+        <div class="box bg-eee p-20 rad-10 mt-10">
+            <img src="${randomImageUrl}" alt="">
+            <div class="mb-15">
+                <label class="fs-14 c-grey d-block mb-10" for="${nameId}">Name</label>
+                <input class="b-none border-ccc p-10 rad-6 w-full d-block" type="text" id="${nameId}"
+                    value="">
+            </div>
+            <div class="mb-15">
+                <label class="fs-14 c-grey d-block mb-10" for="${ageId}">Age</label>
+                <input class="b-none border-ccc p-10 rad-6 w-full d-block" type="text" id="${ageId}" value="">
+            </div>
+            <div class="mb-15">
+                <label class="fs-14 c-grey d-block mb-10" for="${cgpaId}">CGPA</label>
+                <input class="b-none border-ccc p-10 rad-6 w-full d-block" type="text" id="${cgpaId}" value="">
+            </div>
+            <div class="mb-15">
+                <label class="fs-14 c-grey d-block mb-10" for="${idId}">Id</label>
+                <input class="b-none border-ccc p-10 rad-6 w-full d-block" type="text" id="${idId}" value="">
+                <input class="b-none bg-blue p-10 rad-6 w-fit d-block" type="button" value="Confirm"
+                    onclick="addStudent('${nameId}', '${ageId}', '${cgpaId}', '${idId}')">
+            </div>
+        </div>
+    `;
+
+            var studentContainer = document.getElementById('studentContainer');
+            studentContainer.insertAdjacentHTML('beforeend', newStudentCard);
+        }
+
+        function addStudent(nameId, ageId, cgpaId, idId) {
+    var name = document.getElementById(nameId).value;
+    var age = document.getElementById(ageId).value;
+    var cgpa = document.getElementById(cgpaId).value;
+    var student_id  = document.getElementById(idId).value;
+
+    fetch('http://localhost:3000/addStudent', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, age, cgpa, student_id  })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+}
+
+    </script>
+
+</body>
+
+</html>

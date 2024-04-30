@@ -1,0 +1,25 @@
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+
+# Copy package.json and package-lock.json
+COPY package.json .
+COPY package-lock.json .
+COPY package.json ./
+COPY package-lock.json ./
+
+
+
+
+# Install dependencies
+RUN npm install
+
+# Copy server files
+COPY /server/server.js .
+
+# Expose the port your app runs on
+EXPOSE 3000
+
+# Run the command to start your app
+CMD ["node", "server.js"]

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/framework.css">
+    <title>Blax</title>
+</head>
+
+<body>
+
+    <div class="page ">
+        <div class="topbar d-flex">
+            <img class="m-15" src="images/kisspng-royalty-free-logo-dragon-5af7c7409a9693.0700452215261878406332.png"
+                alt="">
+
+            <ul class="topul d-flex w-full">
+                <li> <a href="index.html">Homepage </a></li>
+                <li><a href="Team.html">Team Memebers</a></li>
+                <li><a href="last.html">Settings</a></li>
+
+            </ul>
+        </div>
+
+        <h1 class="p-relative m-15">Settings</h1>
+        <div class="settings-page  m-20 d-grid gap-20">
+
+            <!-- Start Settings Box  -->
+
+            <div class="p-20 bg-eee  rad-10">
+                <h2 class="mt-0 mb-10">Site Control</h2>
+                <p class="fs-15 c-grey mb-20 mt-0">Contorol the WebSite If there is Maintainance</p>
+                <div class="mb-15 between-flex">
+                    <div>
+
+                        <span>Webisite Control</span>
+                        <p class="c-grey mt-5 mb-0 fs-13">Open/Close Website And Type The Reason</p>
+                    </div>
+
+
+                    <div>
+                        <label>
+                            <input class="toggle-checkbox" type="checkbox" checked>
+                            <div class="toggle-switch"></div>
+                        </label>
+
+                    </div>
+
+                </div>
+                <textarea class="close-message p-10 rad-6 d-block" placeholder="Close Message Content"></textarea>
+            </div>
+            <!-- End Settings BOx  -->
+
+            <!-- Start Settings Box  -->
+
+            <div class="p-20 bg-eee rad-10">
+                <h2 class="mt-0 mb-10">General Info</h2>
+                <p class="fs-15 c-grey mb-20 mt-0">General Information About Your Account</p>
+
+                <div class="mb-15">
+                    <label class="fs-14 c-grey d-block mb-10" for="first">First Name</label>
+                    <input class="b-none border-ccc p-10 rad-6 w-full d-block" type="text" id="first"
+                        placeholder="First Name">
+                </div>
+                <div class="mb-15">
+                    <label class="fs-14 c-grey d-block mb-10" for="second">Last Name</label>
+                    <input class="b-none border-ccc p-10 rad-6 w-full d-block" type="text" id="second"
+                        placeholder="Last Name">
+                </div>
+                <div class="mb-15">
+                    <label class="fs-14 c-grey d-block mb-10" for="Email">Email</label>
+                    <input class=" email b-none border-ccc p-10 rad-6 mr-10" type="email" id="email" value="abc@nn.com"
+                        disabled>
+                    <a class="c-blue" href="#">Change</a>
+                </div>
+            </div>
+            <!-- End Settings BOx  -->
+            <!-- Start Settings Box  -->
+
+            <div class="p-20 bg-eee  rad-10">
+                <h2 class="mt-0 mb-10">Security Info </h2>
+                <p class="fs-15 c-grey mb-20 mt-0">Security Information About Your Account</p>
+
+                <div class="sec-box mb-15 between-flex">
+                    <div class="info">
+                        <span class="mt-5">Password</span>
+                        <p class="mt-5 c-grey mb-0 fs-13">Last Changed On 25/10/2021</p>
+                    </div>
+
+                    <a class="button bg-blue c-white  btn-shape" href="#">Change</a>
+                </div>
+                <div class="sec-box mb-15 between-flex">
+                    <div class="info">
+                        <span class="mt-5">Two-Factor AUthentication</span>
+                        <p class="mt-5 c-grey mb-0 fs-13">Enable/Disable The Feature</p>
+                    </div>
+                    <label>
+                        <input class="twofactor toggle-checkbox" type="checkbox" checked>
+                        <div class="toggle-switch"></div>
+                    </label>
+
+                </div>
+
+                <div class="sec-box  between-flex">
+                    <div class="info">
+                        <span class="mt-5">Devices</span>
+                        <p class="mt-5 c-grey mb-0 fs-13">Check The Login Devices List</p>
+                    </div>
+
+                    <a class=" bg-eee c-black  btn-shape" href="#">Devices</a>
+
+
+                </div>
+
+            </div>
+            <!-- End Settings BOx  -->
+
+
+            <!-- Start Social Info   -->
+
+
+            <div class="social-boxes p-20 bg-eee  rad-10">
+                <h2 class="mt-0 mb-10">Social Info</h2>
+                <p class="fs-15 c-grey mb-20 mt-0">Social Media Information</p>
+
+                <div class="data c-grey  rad-10 d-flex align-center mb-15">
+                    <i class="fa-brands fa-facebook fa-x center-flex2 "></i>
+                    <input type="text" class="w-full" placeholder="Facebook Username">
+                </div>
+
+                <div class="data c-grey  rad-10 d-flex align-center mb-15">
+                    <i class="fa-brands fa-linkedin fa-x center-flex2 "></i>
+                    <input type="text" class="w-full" placeholder="Linkedin Username">
+                </div>
+
+                <div class="data c-grey rad-10 d-flex align-center mb-15">
+                    <i class="fa-brands fa-twitter fa-x center-flex2 "></i>
+                    <input type="text" class="w-full" placeholder="Twitter Username">
+                </div>
+
+                <div class="data c-grey  rad-10 d-flex align-center mb-15">
+                    <i class="fa-brands fa-youtube fa-x center-flex2 "></i>
+                    <input type="text" class="w-full" placeholder="Youtube Username">
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+</body>
+
+</html>
